@@ -11,7 +11,7 @@ public class work3_25 {
 		int userSelect = 0;
 		System.out.println("歡迎使用homework_3，");
 		while (userSelect < 4) {
-			System.out.print("請選擇要觀看的作業名稱(請輸入數字)：\n1.你是不是三角形阿、2.數字魔王、3.阿文不會中的大樂透 4.離開程式\n你的選擇：");
+			System.out.print("請選擇要觀看的作業名稱(請輸入數字)：\n1.你是不是三角形阿、2.數字先生、3.阿文不會中的大樂透 4.離開程式\n你的選擇：");
 			userSelect = sc.nextInt();
 			// 檢查使用者再主選單有沒有輸入錯誤
 			if (userSelect > 4) {
@@ -31,18 +31,16 @@ public class work3_25 {
 					int S3 = sc.nextInt();
 					int[] totSide = { S1, S2, S3 };
 					System.out.print(Triangle(totSide) + "\n是否要繼續使用?1.要 2.不要");
-					oneAgain = sc.nextInt();
+					oneAgain = sc.nextInt();//檢查是否還要再繼續執行程式
 				}
 
 			// • 請設計一隻程式,會亂數產生一個0~9的數字,然後可以玩猜數字遊戲,猜錯會顯示錯誤訊息,猜對則顯示正確訊息,如圖示結果:
 			} else if (userSelect == 2) { // 猜數字
-				System.out.println("歡迎來到數字深淵，你是否準備好擊敗魔王了\n溫馨提醒：若輸入\"66666\"可中途離開遊戲");
+				System.out.println("來找尋數字先生的蹤跡吧!!\n溫馨提醒：若輸入\"66666\"可中途離開遊戲");
 				for (int oneAgain = 0; oneAgain <= 2;) {
 					System.out.print("請輸入0~10000的數字：");
 					int userInput = sc.nextInt();
 					int r = (int) (Math.random() * 10001);
-					if (userInput == 12345) // 金手指
-						System.out.println("偷偷告訴妳喔 " + r);
 					for (oneAgain = 0; oneAgain <= 1;) {
 						int compare = Number(userInput, r);
 						if (compare == 0) {
@@ -60,12 +58,13 @@ public class work3_25 {
 			// 請您設計一隻程式,讓阿文可以輸入他不想要的數字(1~9),畫面會顯示他可以選擇的號碼與總數
 			} else if (userSelect == 3) {
 				for (int oneAgain = 0; oneAgain <= 1;) {
-					System.out.print("請輸入阿文不想要的數字：(1~9)");
+					oneAgain = 0;
+					System.out.print("請輸入阿文不想要的數字：(1~9)：");
 					int weiSelect = sc.nextInt();
 					if (weiSelect > 0 && weiSelect < 10) {
 						lotto(weiSelect);
 						System.out.print("是否還要繼續?1.要 2.不要：");
-						oneAgain += sc.nextInt();
+						oneAgain = sc.nextInt();
 					} else {
 						oneAgain = 0;
 						System.out.println("輸入錯誤，請重新輸入");
@@ -81,8 +80,8 @@ public class work3_25 {
 	public static String Triangle(int[] x) {
 		Arrays.sort(x);
 		if (x[0] + x[1] > x[2]) {
-			if (x[0] == x[1] && x[2] != x[1]) {
-				return "看起來很高的三角形";
+			if (x[0] == x[1] && x[1] != x[2] || x[1] == x[2] && x[0] != x[2]) {
+				return "看起來很高的等腰三角形";
 			} else if (x[0] == x[1] && x[1] == x[2]) {
 				return "長得像御飯糰的正三角形";
 			} else if (x[0] * x[0] + x[1] * x[1] == x[2] * x[2]) {
@@ -97,24 +96,26 @@ public class work3_25 {
 
 	// 猜數字的方法
 	public static int Number(int user, int random) {
-		if (user == 66666) //查看玩家是否要中離
+		if (user == 12345) // 金手指
+			System.out.println("偷偷告訴妳喔 " + random);
+		if (user == 66666) // 查看玩家是否要中離
 			return 2;
 		if (user > 10000 || user < 0) {
 			System.out.print("你在輸入甚麼個賴東東，再輸入一次：");
 			return 1;
 		}
 		if (user == random) {
-			System.out.print("恭喜挑戰魔王成功!!\n是否還要繼續遊玩?1.要 2.不要 ：");
+			System.out.print("恭喜找到數字先生!!\n是否還要繼續遊玩?1.要 2.不要 ：");
 			return 0;
 		}
-		//提示玩家數字的大小
-		if (user < random)
-			System.out.print("笑死!!答錯囉~你的數字比魔王數字小，你再猜一次!\n你的數字：");
-		if (user > random)
-			System.out.print("你在哭喔~你的數字比魔王數字大，你再猜一次!\n你的數字：");
-		if (user > random || user < random) //簡化程式碼
+		// 提示玩家數字的大小
+		if (user < random) {
+			System.out.print("笑死!!答錯囉~你的數字比數字先生小，你再猜一次!\n你的數字：");
 			return 1;
-		return 999; // 設定方法使用，暫時無意義
+		}else {
+			System.out.print("你在哭喔~你的數字比數字先生大，你再猜一次!\n你的數字：");
+			return 1;
+		}
 	}
 
 	// 阿文的樂透方法
@@ -122,12 +123,18 @@ public class work3_25 {
 		int[] number = new int[6];
 		System.out.print("反正也不會中!建議阿文的樂透號碼為：");
 		for (int i = 0; i < number.length;) {
-			int sum = 0;
-			int random = (int) (Math.random() * 49) + 1;
-			if (random / (user * 10) != 1 && random / 10 != user) {
-				sum = number[i] + random;
+			number[i] = (int) (Math.random() * 49) + 1;
+			// 檢查有無重複數字
+			for (int j = 0; j < i;j++) {
+				if ( number[i] == number[j]) {
+					number[i] = (int) (Math.random() * 49) + 1;
+					j = 0;
+				}
+			}
+			// 判斷是否式阿文不要的數字
+			if (number[i] / (user * 10) != 1 && number[i] % 10 != user) {
+				System.out.print(number[i] + " ");
 				i++;
-				System.out.print(sum + " ");
 			}
 		}
 		System.out.println();
