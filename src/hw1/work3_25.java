@@ -119,7 +119,7 @@ public class work3_25 {
 	}
 
 	// 阿文的樂透方法
-	public static int lotto(int user) {
+	public static void lotto(int user) {
 		int[] number = new int[6];
 		System.out.print("反正也不會中!建議阿文的樂透號碼為：");
 		for (int i = 0; i < number.length;) {
@@ -138,6 +138,5 @@ public class work3_25 {
 			}
 		}
 		System.out.println();
-		return 1;// 設定方法使用，暫時無意義
 	}
 }
