@@ -7,6 +7,7 @@ public class Question_4_5 {
 //	例:輸入 1984 9 8 三個號碼後,程式會顯示「輸入的日期為該年第252天」
 	Scanner sc = new Scanner(System.in);
 
+	// 天數計算使用
 	public void toDay(int[] date) {
 		int sum = 0;
 		sum += (date[1] - 1) * 30;
@@ -22,6 +23,7 @@ public class Question_4_5 {
 		System.out.println(sum + date[2]);
 	}
 
+	// 檢查使用者輸入內容是否有錯誤
 	public void date() {
 		int[] date = new int[3];
 		for (int i = 0; i < date.length; i++) {
@@ -46,14 +48,12 @@ public class Question_4_5 {
 						i = 1;
 					}
 				}
-				
-
 			}
 			if (date[1] <= 7 && date[1] % 2 == 0 && date[1] != 2 && date[2] >= 31) {
 				System.out.println("你輸入的月份天數是錯誤的" + date[1] + "月，最多只有30天，請重新輸入");
 				i--;
 			}
-			if(date[1]>=8 && date[1]%2!=0 && date[2]>=31) {
+			if (date[1] >= 8 && date[1] % 2 != 0 && date[2] >= 31) {
 				System.out.println("你輸入的月份天數是錯誤的" + date[1] + "月，最多只有30天，請重新輸入");
 				i--;
 			}
@@ -62,6 +62,7 @@ public class Question_4_5 {
 		toDay(date);
 	}
 
+	// 判斷是否為閏年
 	public boolean leapYear(int year) {
 		if (year % 4 == 0 && year % 100 != 0)
 			return true;

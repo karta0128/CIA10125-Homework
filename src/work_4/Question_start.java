@@ -24,12 +24,8 @@ public class Question_start {
 //		int money = sc.nextInt();
 //		q4.cash(friend, money);
 		
-		Question_4_5 q5 = new Question_4_5();
-		q5.date();
-//		int[] date = new int[3];
-//		for(int i = 0;i<date.length;i++)
-//			date[i]=sc.nextInt();
-//		q5.toDay(date);
+//		Question_4_5 q5 = new Question_4_5();
+//		q5.date();
 		
 //		Question_4_6 q6 = new Question_4_6();
 //		int[][] student = {{10,35,40,100,90,85,75,70},
