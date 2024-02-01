@@ -24,7 +24,8 @@ public class Question_start {
 //		int money = sc.nextInt();
 //		q4.cash(friend, money);
 		
-//		Question_4_5 q5 = new Question_4_5();
+		Question_4_5 q5 = new Question_4_5();
+		q5.date();
 //		int[] date = new int[3];
 //		for(int i = 0;i<date.length;i++)
 //			date[i]=sc.nextInt();
